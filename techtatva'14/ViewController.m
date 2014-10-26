@@ -207,6 +207,7 @@
         blurView.backgroundColor = [UIColor grayColor];
         blurView.alpha = 0.9;
         [self.view addSubview:blurView];
+        [blurView addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(removeBlurAndSubview)]];
         NSArray * nib = [[NSBundle mainBundle] loadNibNamed:@"RightButtonNavBar" owner:self options:nil];
         _rightMenu = [nib objectAtIndex:0];
         _rightMenu.frame = CGRectMake(140, 74, 170, 257);
@@ -220,9 +221,6 @@
         
         [_rightMenu.resultsButtonPressed addTarget:self action:@selector(resultsButton) forControlEvents:UIControlEventTouchUpInside];
         
-        UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(removeBlurAndSubview)];
-        
-        [self.view addGestureRecognizer:tap];
     }
 }
 
